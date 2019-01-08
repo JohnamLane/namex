@@ -841,6 +841,7 @@ def test_leading_vowel_not_match_consonant(solr, client, jwt, app):
     )
 
 
+@integration_synonym_api
 @integration_solr
 def test_unusual_result(solr, client, jwt, app):
     clean_database(solr)
