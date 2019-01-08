@@ -836,7 +836,7 @@ def test_leading_vowel_not_match_consonant(solr, client, jwt, app):
     verify_results(client, jwt,
        query='EH',
        expected=[
-           {'name': '----EH - PHONETIC SEARCH'}
+           {'name': '----EH'}
        ]
     )
 
