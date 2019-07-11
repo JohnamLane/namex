@@ -1,0 +1,46 @@
+# Build config for Jenkins cypress functional testing
+#
+# Process this file, creating or replacing imagestreams and builds
+# $ oc process -f openshift/cypress.bc.yaml | oc [create|replace] -n <PROJECT> -f -
+#
+apiVersion: v1
+kind: Template
+metadata:
+  name: cypress
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: cypress
+    labels:
+      build: cypress
+    annotations:
+      openshift.io/generated-by: OpenShiftNewBuild
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewBuild
+    labels:
+      build: cypress
+    name: cypress
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: cypress:latest
+    source:
+      dockerfile: |
+        FROM cypress/included:3.4.0
+
+      type: Dockerfile
+    strategy:
+      dockerStrategy:
+        env:
+        - name: OPENSHIFT_JENKINS_JVM_ARCH
+          value: x86_64
+      type: Docker
+    triggers:
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
