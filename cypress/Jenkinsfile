@@ -36,7 +36,14 @@ import groovy.json.JsonOutput
         )
     ])
     {    
-        node (cypress_e2e_label) {     
+        node (cypress_e2e_label) {    
+
+            stage('Checkout') {
+                
+                    echo "checking out source"
+                    echo "Build: ${BUILD_ID}"
+                    checkout scm              
+            } 
 
             stage ("Sleep to allow rsh time") {		
                 sleep 30000		
