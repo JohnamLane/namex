@@ -31,8 +31,7 @@ objects:
         name: cypress:latest
     source:
       dockerfile: |
-        FROM cypress/included:3.4.0
-
+        FROM cypress/browsers:node12.6.0-chrome75 
       type: Dockerfile
     strategy:
       dockerStrategy:
