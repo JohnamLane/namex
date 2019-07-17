@@ -1,6 +1,5 @@
 Cypress.Commands.add('getSessionToken', () => {
-    cy.visit('https://namex-dev.pathfinder.gov.bc.ca');
-
+    
     cy.request({
         method: 'POST',
         url: Cypress.env('KEYCLOAK_AUTH_URL'),
