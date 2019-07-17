@@ -60,6 +60,9 @@ import groovy.json.JsonOutput
 
             stage("Run NR creation script"){
                     sh '''
+                         pwd
+                         dir
+                         cd cypress-e2e
                          node_modules/.bin/cypress run --spec "cypress/integration/nro_create.spec.js"                        
                     '''
             }
