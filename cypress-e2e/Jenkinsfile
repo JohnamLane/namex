@@ -51,7 +51,6 @@ import groovy.json.JsonOutput
 
             stage("install cypress") {
                     sh '''
-                         pwd
                          cd cypress-e2e
                          npm install                         
                     '''
@@ -60,8 +59,6 @@ import groovy.json.JsonOutput
 
             stage("Run NR creation script"){
                     sh '''
-                         pwd
-                         dir
                          cd cypress-e2e
                          node_modules/.bin/cypress run --spec "cypress/integration/nro_create.spec.js"                        
                     '''
@@ -69,6 +66,13 @@ import groovy.json.JsonOutput
             
             stage ("Sleep to wait for extractor") {		
                 sleep 120		
+            }
+
+            stage("Run namex scripts"){
+                    sh '''
+                         cd cypress-e2e
+                         node_modules/.bin/cypress run --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
+                    '''
             }
     }
 }

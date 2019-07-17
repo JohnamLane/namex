@@ -1,4 +1,5 @@
 {
     "chromeWebSecurity": false,
-    "watchForFileChanges": false
+    "watchForFileChanges": false,
+    "video": false
 }
