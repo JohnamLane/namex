@@ -1,5 +1,6 @@
 {
     "chromeWebSecurity": false,
     "watchForFileChanges": false,
-    "video": false
+    "video": false,
+    "defaultCommandTimeout": 10000
 }

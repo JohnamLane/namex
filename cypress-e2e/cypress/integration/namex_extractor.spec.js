@@ -8,14 +8,16 @@ describe('Namex extractor test steps', function () {
         cy.get('a[href="/find"]').should('be.visible').click();
 
         cy.fixture('name-choices').as('names');
+
+        cy.server();
+        cy.route('**/requests**').as('FindNR');   
     });
     
     it('Verifies that the firm NR was extracted', function () {
         
         cy.get('#search-filter-company').type(this.names.firmname);    
         cy.get('#search-filter-submittedDate').select('Today');
-        cy.server();
-        cy.route('**/requests**').as('FindNR');      
+   
         cy.get('#search-filter-state').select('DRAFT');
         cy.wait('@FindNR');        
         
@@ -30,8 +32,7 @@ describe('Namex extractor test steps', function () {
                 
         cy.get('#search-filter-company').type(this.names.NWPTAname);    
         cy.get('#search-filter-submittedDate').select('Today');
-        cy.server();
-        cy.route('**/requests**').as('FindNR');
+
         cy.get('#search-filter-state').select('DRAFT');
         cy.wait('@FindNR');        
 
@@ -46,8 +47,7 @@ describe('Namex extractor test steps', function () {
                 
         cy.get('#search-filter-company').type(this.names.EPname);    
         cy.get('#search-filter-submittedDate').select('Today');
-        cy.server();
-        cy.route('**/requests**').as('FindNR');
+ 
         cy.get('#search-filter-state').select('DRAFT');
         cy.wait('@FindNR');
         
@@ -61,8 +61,7 @@ describe('Namex extractor test steps', function () {
                 
         cy.get('#search-filter-company').type(this.names.LLPname);    
         cy.get('#search-filter-submittedDate').select('Today');
-        cy.server();
-        cy.route('**/requests**').as('FindNR');
+
         cy.get('#search-filter-state').select('DRAFT');
         cy.wait('@FindNR');
         
