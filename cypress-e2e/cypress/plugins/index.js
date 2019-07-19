@@ -21,5 +21,7 @@ module.exports = (on, config) => {
   config.env.KEYCLOAK_AUTH_BODY = process.env.KEYCLOAK_AUTH_BODY;
   config.env.TEST_CC = process.env.TEST_CC;
   config.env.TEST_CC_CVD = process.env.TEST_CC_CVD;
+  config.env.KEYCLOAK_USER = process.env.KEYCLOAK_USER;
+  config.env.KEYCLOAK_PASS = process.env.KEYCLOAK_PASS;
   return config;
 }

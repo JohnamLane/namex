@@ -1,7 +1,12 @@
 describe('Edit NR details steps', function () {
     beforeEach(function () {
-        cy.getSessionToken();
-        cy.get('a[href="/find"]').click();
+        cy.visit('https://namex-dev.pathfinder.gov.bc.ca');   
+        cy.get('a[href="/signin"]').click();
+        cy.get('#username').type(Cypress.env('KEYCLOAK_USER'));
+        cy.get('#password').type(Cypress.env('KEYCLOAK_PASS'));
+        cy.get('input[name="login"]').click();
+        cy.get('a[href="/find"]').should('be.visible').click();
+
         cy.fixture('name-choices').as('names');
     });
 

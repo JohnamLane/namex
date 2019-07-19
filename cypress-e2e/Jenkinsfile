@@ -36,7 +36,9 @@ import groovy.json.JsonOutput
                 secretEnvVar(key: 'KEYCLOAK_AUTH_URL', secretName: 'e2e-secrets', secretKey: 'keycloakAuthURL'),
                 secretEnvVar(key: 'KEYCLOAK_AUTH_BODY', secretName: 'e2e-secrets', secretKey: 'keycloakAuthBody'),                
                 secretEnvVar(key: 'TEST_CC', secretName: 'e2e-secrets', secretKey: 'TestCC'),
-                secretEnvVar(key: 'TEST_CC_CVD', secretName: 'e2e-secrets', secretKey: 'TestCVD')
+                secretEnvVar(key: 'TEST_CC_CVD', secretName: 'e2e-secrets', secretKey: 'TestCVD'),
+                secretEnvVar(key: 'KEYCLOAK_PASS', secretName: 'e2e-secrets', secretKey: 'KeycloakCredP'),
+                secretEnvVar(key: 'KEYCLOAK_USER', secretName: 'e2e-secrets', secretKey: 'KeycloakCredU')
             ]
         )
     ])
@@ -71,7 +73,7 @@ import groovy.json.JsonOutput
             stage("Run namex scripts"){
                     sh '''
                          cd cypress-e2e
-                         DEBUG=cypress:* node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
+                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
                     '''
             }
     }
