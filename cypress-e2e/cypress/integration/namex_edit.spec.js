@@ -21,7 +21,7 @@ describe('Edit NR details steps', function () {
         cy.route('**/comments').as('commentsCall');
     });
 
-    it.only('Edits firm name choice one, confirms auto-comments happen', function () {
+    it('Edits firm name choice one, confirms auto-comments happen', function () {
 
         cy.get('#search-filter-company').type(this.names.firmname);
 
