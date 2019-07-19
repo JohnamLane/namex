@@ -38,7 +38,9 @@ import groovy.json.JsonOutput
                 secretEnvVar(key: 'TEST_CC', secretName: 'e2e-secrets', secretKey: 'TestCC'),
                 secretEnvVar(key: 'TEST_CC_CVD', secretName: 'e2e-secrets', secretKey: 'TestCVD'),
                 secretEnvVar(key: 'KEYCLOAK_PASS', secretName: 'e2e-secrets', secretKey: 'KeycloakCredP'),
-                secretEnvVar(key: 'KEYCLOAK_USER', secretName: 'e2e-secrets', secretKey: 'KeycloakCredU')
+                secretEnvVar(key: 'KEYCLOAK_USER', secretName: 'e2e-secrets', secretKey: 'KeycloakCredU'),
+                secretEnvVar(key: 'IDIR_USER', secretName: 'e2e-secrets', secretKey: 'IDIRCredU'),
+                secretEnvVar(key: 'IDIR_PASS', secretName: 'e2e-secrets', secretKey: 'IDIRCredP')
             ]
         )
     ])
@@ -70,10 +72,24 @@ import groovy.json.JsonOutput
                 sleep 120		
             }
 
-            stage("Run namex scripts"){
+            stage("Run namex edit scripts"){
                     sh '''
                          cd cypress-e2e
                          node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
+                    '''
+            }
+
+            stage("Cancel NRs in NameX"){
+                    sh '''
+                         cd cypress-e2e
+                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_cancel.spec.js"                        
+                    '''
+            }
+
+            stage("Verify names in NRO"){
+                    sh '''
+                         cd cypress-e2e
+                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/nro_verify.spec.js"                        
                     '''
             }
     }

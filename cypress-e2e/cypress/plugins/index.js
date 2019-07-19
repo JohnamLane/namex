@@ -23,5 +23,7 @@ module.exports = (on, config) => {
   config.env.TEST_CC_CVD = process.env.TEST_CC_CVD;
   config.env.KEYCLOAK_USER = process.env.KEYCLOAK_USER;
   config.env.KEYCLOAK_PASS = process.env.KEYCLOAK_PASS;
+  config.env.IDIR_USER = process.env.IDIR_USER;
+  config.env.IDIR_PASS = process.env.IDIR_PASS;
   return config;
 }
