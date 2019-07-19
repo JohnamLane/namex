@@ -64,7 +64,7 @@ import groovy.json.JsonOutput
             stage("Run NR creation script"){
                     sh '''
                          cd cypress-e2e
-                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/nro_create.spec.js"                        
+                         node_modules/.bin/cypress run --spec "cypress/integration/nro_create.spec.js"                        
                     '''
             }
             
@@ -75,21 +75,21 @@ import groovy.json.JsonOutput
             stage("Run namex edit scripts"){
                     sh '''
                          cd cypress-e2e
-                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
+                         node_modules/.bin/cypress run --spec "cypress/integration/namex_extractor.spec.js,cypress/integration/namex_edit.spec.js"                        
                     '''
             }
 
             stage("Cancel NRs in NameX"){
                     sh '''
                          cd cypress-e2e
-                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/namex_cancel.spec.js"                        
+                         node_modules/.bin/cypress run --spec "cypress/integration/namex_cancel.spec.js"                        
                     '''
             }
 
             stage("Verify names in NRO"){
                     sh '''
                          cd cypress-e2e
-                         node_modules/.bin/cypress run --browser chrome --spec "cypress/integration/nro_verify.spec.js"                        
+                         node_modules/.bin/cypress run --spec "cypress/integration/nro_verify.spec.js"                        
                     '''
             }
     }
